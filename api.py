@@ -26,8 +26,7 @@ async def text_to_speech(tts_request: TtsRequest) -> FileResponse:
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".mp3")
     temp_file_path = temp_file.name
     await communicate.save(temp_file_path)
-    # audio_file = open(temp_file_path, "rb")
-    # audio_file_content = audio_file.read()
+
     return FileResponse(temp_file_path, media_type="audio/mpeg")
 
 @app.get("/voices")
